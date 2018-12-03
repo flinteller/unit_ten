@@ -1,4 +1,5 @@
-import pygame, sys
+import pygame
+import sys
 from pygame.locals import*
 import Bullseye
 
@@ -9,6 +10,7 @@ pygame.display.set_caption("Bullseye Game")
 my_target = Bullseye.Target(main_surface)
 my_target.draw_target()
 
+times = 0
 while True:
     for event in pygame.event.get():
         if event.type == QUIT:
@@ -16,3 +18,7 @@ while True:
             sys.exit()
         elif event.type == MOUSEBUTTONDOWN:
             my_target.add_points(pygame.mouse.get_pos())
+            times += 1
+        elif times == 5:
+            pygame.quit()
+            sys.exit()
