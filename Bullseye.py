@@ -8,6 +8,10 @@ class Target:
         pygame.init()
 
     def draw_target(self):
+        """
+        Draws each circle of the target
+        :return: none
+        """
         black = (0, 0, 0)
         blue = (0, 0, 255)
         red = (255, 0, 0)
@@ -21,29 +25,31 @@ class Target:
         pygame.display.update()
 
     def add_points(self, position):
+        """
+        Finds distance from center and displays points for a click in that ring
+        :param position:
+        :return: none
+        """
         self.main_surface.fill((255, 255, 255))
         self.draw_target()
         mouse_font = pygame.font.SysFont("Verdana", 32)
         x_value = position[0]
         y_value = position[1]
         distance = math.sqrt(((x_value - 500) ** 2) + ((y_value - 500) ** 2))
-        points = 0
-        times = 0
         if distance < 100:
-            points = 9
-            times += 1
+            return 9
         elif distance > 100 and distance < 200:
-            points = 7
-            times += 1
+            return 7
         elif distance > 200 and distance < 300:
-            points = 5
-            times += 1
+            return 5
         elif distance > 300 and distance < 400 :
-            points = 3
-            times += 1
+            return 3
         elif distance > 400 and distance < 500:
-            points = 1
-            times += 1
+            return 1
+
+        pygame.display.update()
+
+    def points_system(self):
         mouse_label = mouse_font.render(str(points), 1, (0, 0, 0))
         self.main_surface.blit(mouse_label, (30, 30))
 
