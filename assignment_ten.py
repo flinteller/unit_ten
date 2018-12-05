@@ -1,3 +1,7 @@
+# Flint Eller
+# 12/4/18
+# This program draws a target and lets the user click five times and
+# adds up the total of the points from clicking on different colors
 import pygame
 import sys
 from pygame.locals import*
@@ -20,5 +24,4 @@ while True:
             my_target.add_points(pygame.mouse.get_pos())
             times += 1
         elif times == 5:
-            pygame.quit()
-            sys.exit()
+            MOUSEBUTTONDOWN = 0
